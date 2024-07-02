@@ -57,5 +57,71 @@ function sumArray(uint\[\] memory data) public pure returns (uint sum) {
 
 }
 ```
-devam edecek.
 
+* uint i = 0;: Bu for döngüsünün başlatma kısmıdır. Bir değişken i bildirilir ve 0 olarak başlatılır. Bu değişken, dizideki öğelere erişim için dizin görevi görür.
+  
+* i < data.length;: Bu for döngüsünün koşul kısmıdır. Döngü, dizi verilerinin uzunluğundan küçük olduğu sürece çalışmaya devam edecektir. i veri uzunluğuna eşit veya ondan büyük olduğunda döngü duracaktır.
+  
+* i++: Bu for döngüsünün artış kısmıdır. Döngünün her yinelemesinden sonra i'nin değeri 1 artırılır. Bu, dizini dizideki bir sonraki öğeye taşır.
+  
+* toplam += veri[i];: Döngünün içinde dizi verilerinin i'inci elemanı toplama eklenir. Bu işlem dizideki her eleman için tekrarlanır.
+Döngü dizideki tüm öğeler için yürütüldükten sonra işlev toplam toplamı döndürür.
+
+
+### _Döngüler_ 
+
+While döngüleri, belirtilen koşul doğru kaldığı sürece bir kod bloğunu çalıştırmaya devam eder. Döngü başlamadan önce gereken yineleme sayısı bilinmediğinde kullanışlıdırlar.
+
+#### _Söz Dizimi ve Örnek_
+
+function decrement(uint initial) public pure returns (uint) {
+
+```solidity
+    while (initial &gt; 0) {
+
+        initial--;
+
+    }
+
+    return initial;
+
+}
+```
+
+* while (başlangıç ​​> 0): Bu while döngüsünün koşuludur. Döngü, başlangıç ​​değişkeni 0'dan büyük olduğu sürece çalışmaya devam edecektir.
+  
+* başlangıç--;: Bu, döngünün her yinelemesinde yürütülen kod bloğudur. Her yinelemede başlangıç ​​değişkenini 1 azaltır.
+
+    Döngü, başlangıç ​​değeri 0'dan büyük olmayana kadar başlangıç ​​değerini çalıştırmaya ve azaltmaya devam edecektir. Bu noktada döngü sona erer ve program, döngüyü takip eden herhangi bir kodla devam eder.
+
+Özetle, bu döngü etkin bir şekilde başlangıç ​​değerinden 0'a doğru geri sayar.
+
+### En İyi Uygulamalar ve Hususlar
+
+Karmaşıklığı En Aza İndirin: Sözleşme kodunu basit ve bakımı kolay tutmak için derinlemesine iç içe geçmiş döngülerden ve koşul ifadelerinden kaçının.
+Sonsuz Döngülere Karşı Koruma: Sağlanan tüm gazı tüketebilecek ve işlemlerin başarısız olmasına neden olabilecek sonsuz yürütmeyi önlemek için döngülerin her zaman bir kesme koşuluna sahip olduğundan emin olun.
+Verimli Gaz Kullanımı: Özellikle döngülerde, her yinelemeyle ilişkili gaz maliyetlerine dikkat edin. Mümkün olan yerlerde yürütmeyi en aza indirmek için koşulları ve molaları akıllıca kullanın.
+
+### _Ara Ver ve Devam_
+Ara Ver ve Devam Et'i kullanma Hem for hem de while döngülerinde, döngüden tamamen çıkmak için break komutunu kullanarak akışı daha fazla kontrol edebilir veya geçerli döngü yinelemesinin geri kalanını atlayıp bir sonrakine başlamaya devam edebilirsiniz.
+
+```solidity
+
+function findFirstEven(uint\[\] memory data) public pure returns (uint) {
+
+    for (uint i = 0; i &lt; data.length; i++) {
+
+        if (data\[i\] % 2 == 0) {
+
+            return data\[i\];  // Return the first even number
+
+        }
+
+    }
+
+    return 0;  // Return 0 if no even number is found
+
+}
+```
+
+Eğer başka bir dilde kontrol akışı ve koşul cümleleri kullandıysanız, görebileceğiniz gibi Solidity'nin bu konuda pek bir farkı yok.
